@@ -1,8 +1,15 @@
 from jinja2 import Template
 
-name = "Кирилл"
+name1 = "Привет {{ name }}"
 
-tm = Template("Привет {{name}}")
-msg = tm.render(name=name)
+tm = Template(name1)
+msg = tm.render(name="Кирилл")
 
-print(msg)
+data = '''{% raw %}Модуль Jinja вместо
+определения {{ name }}  
+подставляет соответствующее значение{% endraw %}'''
+
+tm = Template(data)
+msg2 = tm.render(name="Кирилл")
+
+print(msg, msg2, sep="\n" )
